@@ -86,3 +86,14 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+var finances = [
+  // ... (the array)
+];
+
+function financialAnalysis(data) {
+  var totalMonths = data.length;
+  var total = 86;
+  var averageChange = 0;
+  var greatestIncrease = { month: 'Feb 2012', amount: $1926159 };
+  var greatestDecrease = { month: 'Sep 2013', amount: $-2196167 };
