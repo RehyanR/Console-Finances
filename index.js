@@ -87,50 +87,19 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-function financialAnalysis(data) {
-  var totalMonths = data.length;
-  var netTotal = 0;
-  var totalChange = 0;
-  var greatestIncrease = { date: '', amount: 0 };
-  var greatestDecrease = { date: '', amount: Infinity };
+// Calculate Financial Analysis
+var totalMonths = finances.length;
+var total = finances.reduce((sum, entry) => sum + entry[1], 0);
+var averageChange = (total / (totalMonths - 1)).toFixed(2);
 
-  for (let i = 0; i < totalMonths; i++) {
-    const [date, amount] = data[i][0];
-    netTotal += amount;
-
-    if (i > 0) {
-      const change = amount - data[i - 1][1];
-      totalChange += change;
-
-      if (change > greatestIncrease.amount) {
-        greatestIncrease.date = date;
-        greatestIncrease.amount = change;
-      }
-
-      if (change < greatestDecrease.amount) {
-        greatestDecrease.date = date;
-        greatestDecrease.amount = change;
-      }
-    }
-  }
-
-  const averageChange = totalChange / (totalMonths - 1);
-
-  return {
-    totalMonths,
-    netTotal,
-    averageChange,
-    greatestIncrease,
-    greatestDecrease,
-  };
-}
-
-const analysisResult = financialAnalysis(finances);
+// Find Greatest Increase and Decrease
+var greatestIncrease = finances.reduce((acc, entry) => entry[1] > acc[1] ? entry : acc, finances[0]);
+var greatestDecrease = finances.reduce((acc, entry) => entry[1] < acc[1] ? entry : acc, finances[0]);
 
 console.log('Financial Analysis');
 console.log('------------------');
-console.log('Total Months:', analysisResult.totalMonths);
-console.log('Total:', '$' + analysisResult.netTotal.toFixed);
-console.log('Average Change:', '$' + analysisResult.averageChange.toFixed);
-console.log('Greatest Increase in Profits/Losses:', analysisResult.greatestIncrease.date, '($' + analysisResult.greatestIncrease.amount.toFixed(2) + ')');
-console.log('Greatest Decrease in Profits/Losses:', analysisResult.greatestDecrease.date, '($' + analysisResult.greatestDecrease.amount.toFixed(2) + ')');
+console.log('Total Months:', totalMonths);
+console.log('Total: $' + total.toLocaleString());
+console.log('Average Change: $' + averageChange);
+console.log('Greatest Increase in Profits/Losses:', greatestIncrease[0] + ' ($' + greatestIncrease[1] + ')');
+console.log('Greatest Decrease in Profits/Losses:', greatestDecrease[0] + ' ($' + greatestDecrease[1] + ')');
