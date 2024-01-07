@@ -87,14 +87,50 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-var finances = [
-  // ... (the array)
-];
-
 function financialAnalysis(data) {
-  var totalMonths = 86;
-  var total = $38382578;
-  var averageChange = -2315.12;
-  var greatestIncrease = { month: 'Feb 2012', amount: $1926159 };
-  var greatestDecrease = { month: 'Sep 2013', amount: $-2196167 };
+  var totalMonths = data.length;
+  var netTotal = 0;
+  var totalChange = 0;
+  var greatestIncrease = { date: '', amount: 0 };
+  var greatestDecrease = { date: '', amount: Infinity };
 
+  for (let i = 0; i < totalMonths; i++) {
+    const [date, amount] = data[i][0];
+    netTotal += amount;
+
+    if (i > 0) {
+      const change = amount - data[i - 1][1];
+      totalChange += change;
+
+      if (change > greatestIncrease.amount) {
+        greatestIncrease.date = date;
+        greatestIncrease.amount = change;
+      }
+
+      if (change < greatestDecrease.amount) {
+        greatestDecrease.date = date;
+        greatestDecrease.amount = change;
+      }
+    }
+  }
+
+  const averageChange = totalChange / (totalMonths - 1);
+
+  return {
+    totalMonths,
+    netTotal,
+    averageChange,
+    greatestIncrease,
+    greatestDecrease,
+  };
+}
+
+const analysisResult = financialAnalysis(finances);
+
+console.log('Financial Analysis');
+console.log('------------------');
+console.log('Total Months:', analysisResult.totalMonths);
+console.log('Total:', '$' + analysisResult.netTotal.toFixed);
+console.log('Average Change:', '$' + analysisResult.averageChange.toFixed);
+console.log('Greatest Increase in Profits/Losses:', analysisResult.greatestIncrease.date, '($' + analysisResult.greatestIncrease.amount.toFixed(2) + ')');
+console.log('Greatest Decrease in Profits/Losses:', analysisResult.greatestDecrease.date, '($' + analysisResult.greatestDecrease.amount.toFixed(2) + ')');
