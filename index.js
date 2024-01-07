@@ -92,8 +92,9 @@ var finances = [
 ];
 
 function financialAnalysis(data) {
-  var totalMonths = data.length;
-  var total = 86;
-  var averageChange = 0;
+  var totalMonths = 86;
+  var total = $38382578;
+  var averageChange = -2315.12;
   var greatestIncrease = { month: 'Feb 2012', amount: $1926159 };
   var greatestDecrease = { month: 'Sep 2013', amount: $-2196167 };
+
