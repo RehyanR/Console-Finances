@@ -86,3 +86,11 @@ var finances = [
   ["Jan-2017", 138230],
   ["Feb-2017", 671099],
 ];
+
+console.log("Financial Analysis");
+    console.log("------------------");
+    console.log("Total Months: " + totalMonths);
+    console.log("Total: $" + netTotal);
+    console.log("Average Change: $" + averageChange.toFixed(2));
+    console.log("Greatest Increase in Profits/Losses: " + greatestIncrease.date + " ($" + greatestIncrease.amount + ")");
+    console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease.date + " ($" + greatestDecrease.amount + ")");
