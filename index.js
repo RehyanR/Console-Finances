@@ -88,9 +88,21 @@ var finances = [
 ];
 
 console.log("Financial Analysis");
-    console.log("------------------");
-    console.log("Total Months: " + totalMonths);
-    console.log("Total: $" + netTotal);
-    console.log("Average Change: $" + averageChange.toFixed(2));
-    console.log("Greatest Increase in Profits/Losses: " + greatestIncrease.date + " ($" + greatestIncrease.amount + ")");
-    console.log("Greatest Decrease in Profits/Losses: " + greatestDecrease.date + " ($" + greatestDecrease.amount + ")");
+console.log("------------------");
+console.log("Total Months: " + totalMonths);
+console.log("Total: $" + netTotal);
+console.log("Average Change: $" + averageChange.toFixed(2));
+console.log(
+  "Greatest Increase in Profits/Losses: " +
+    greatestIncrease.date +
+    " ($" +
+    greatestIncrease.amount +
+    ")"
+);
+console.log(
+  "Greatest Decrease in Profits/Losses: " +
+    greatestDecrease.date +
+    " ($" +
+    greatestDecrease.amount +
+    ")"
+);
