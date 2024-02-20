@@ -87,6 +87,14 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
+function financialAnalysis(finances) {
+  var totalMonths = finances.length;
+  var netTotal = finances.reduce((acc, curr) => acc + curr[1], 0);
+  var totalChange = 0;
+  var greatestIncrease = { date: '', amount: 0 };
+  var greatestDecrease = { date: '', amount: 0 };
+
+
 console.log("Financial Analysis");
 console.log("------------------");
 console.log("Total Months: " + totalMonths);
