@@ -131,3 +131,4 @@ function financialAnalysis(finances) {
       ")"
   );
 }
+financialAnalysis(finances);
