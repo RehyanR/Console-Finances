@@ -88,45 +88,46 @@ var finances = [
 ];
 
 function financialAnalysis(finances) {
-  var totalMonths = finances.length;
-  var netTotal = finances.reduce((acc, curr) => acc + curr[1], 0);
-  var totalChange = 0;
-  var greatestIncrease = { date: '', amount: 0 };
-  var greatestDecrease = { date: '', amount: 0 };
+  let totalMonths = finances.length;
+  let netTotal = finances.reduce((acc, curr) => acc + curr[1], 0);
+  let totalChange = 0;
+  let greatestIncrease = { date: "", amount: 0 };
+  let greatestDecrease = { date: "", amount: 0 };
 
-  for (var i = 1; i < totalMonths; i++) {
-    var change = finances[i][1] - finances[i - 1][1];
+  for (let i = 1; i < totalMonths; i++) {
+    let change = finances[i][1] - finances[i - 1][1];
     totalChange += change;
-  } 
-  if (change > greatestIncrease.amount) {
-    greatestIncrease.amount = change;
-    greatestIncrease.date = finances[i][0];
-}
 
-if (change < greatestDecrease.amount) {
-    greatestDecrease.amount = change;
-    greatestDecrease.date = finances[i][0];
-}
-}
+    if (change > greatestIncrease.amount) {
+      greatestIncrease.amount = change;
+      greatestIncrease.date = finances[i][0];
+    }
 
-let averageChange = totalChange / (totalMonths - 1);
+    if (change < greatestDecrease.amount) {
+      greatestDecrease.amount = change;
+      greatestDecrease.date = finances[i][0];
+    }
+  }
 
-console.log("Financial Analysis");
-console.log("------------------");
-console.log("Total Months: " + totalMonths);
-console.log("Total: $" + netTotal);
-console.log("Average Change: $" + averageChange.toFixed(2));
-console.log(
-  "Greatest Increase in Profits/Losses: " +
-    greatestIncrease.date +
-    " ($" +
-    greatestIncrease.amount +
-    ")"
-);
-console.log(
-  "Greatest Decrease in Profits/Losses: " +
-    greatestDecrease.date +
-    " ($" +
-    greatestDecrease.amount +
-    ")"
-);
+  let averageChange = totalChange / (totalMonths - 1);
+
+  console.log("Financial Analysis");
+  console.log("------------------");
+  console.log("Total Months: " + totalMonths);
+  console.log("Total: $" + netTotal);
+  console.log("Average Change: $" + averageChange.toFixed(2));
+  console.log(
+    "Greatest Increase in Profits/Losses: " +
+      greatestIncrease.date +
+      " ($" +
+      greatestIncrease.amount +
+      ")"
+  );
+  console.log(
+    "Greatest Decrease in Profits/Losses: " +
+      greatestDecrease.date +
+      " ($" +
+      greatestDecrease.amount +
+      ")"
+  );
+}
