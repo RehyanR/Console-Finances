@@ -97,8 +97,19 @@ function financialAnalysis(finances) {
   for (var i = 1; i < totalMonths; i++) {
     var change = finances[i][1] - finances[i - 1][1];
     totalChange += change;
-  } }
+  } 
+  if (change > greatestIncrease.amount) {
+    greatestIncrease.amount = change;
+    greatestIncrease.date = finances[i][0];
+}
 
+if (change < greatestDecrease.amount) {
+    greatestDecrease.amount = change;
+    greatestDecrease.date = finances[i][0];
+}
+}
+
+let averageChange = totalChange / (totalMonths - 1);
 
 console.log("Financial Analysis");
 console.log("------------------");
