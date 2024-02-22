@@ -94,6 +94,11 @@ function financialAnalysis(finances) {
   var greatestIncrease = { date: '', amount: 0 };
   var greatestDecrease = { date: '', amount: 0 };
 
+  for (var i = 1; i < totalMonths; i++) {
+    var change = finances[i][1] - finances[i - 1][1];
+    totalChange += change;
+  } }
+
 
 console.log("Financial Analysis");
 console.log("------------------");
